@@ -3,10 +3,11 @@
 // @version         1.0.0
 // @description     All
 // @match           *://*/*
+// @match           data:text/html*
 // @exclude         *://web.grindr.com/*
+// @noframes
 // @run-at          document-start
 // @weight          99
-// @noframes
 // ==/UserScript==
 
 addStyle = function (css) {

@@ -14,6 +14,17 @@
 (function () {
   let userAgent = navigator.userAgent;
   console.log(userAgent);
+
+  addStyle(`
+    .thumb-list__item {
+      width: 25% !important;
+    }
+    .video-thumb__image-container {
+      width: 100% !important;
+      height: unset !important;
+    }
+  `);
+
   let a;
   if (mobileCheck()) {
     let container;
@@ -35,19 +46,21 @@
       k.click();
     }
     document.querySelector(".player-container__player").style.height = "90vh";
+    document.querySelector(".player-container__player").querySelector("video").load();
   }
   let link = document.createElement("a");
   link.href = a;
   link.target = "_blank";
-  link.innerText = "Open in New Tab";
-  let para = document.createElement("p");
-  para.append(link);
-  mobileCheck()
-    ? ipadCheck()
-      ? document.querySelector(".header-icons").after(para)
-      : document.querySelector(".page-video-header__title-views").after(para)
-    : document.querySelector(".header-icons").after(para);
-
+  let icon = document.createElement("i");
+  icon.className = "xh-icon anchor-link cobalt-dark";
+  let text = document.createElement("span");
+  text.innerText = "Open";
+  link.append(icon, text);
+  if (mobileCheck()) {
+    document.querySelector(".page-video-header__title-views").after(link);
+  } else {
+    document.querySelector(".header-icons").append(link);
+  }
   document.querySelectorAll("[class*='yld']").forEach((b) => b.remove());
   document.querySelectorAll("[data-role*='yld']").forEach((b) => b.remove());
 })();

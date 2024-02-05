@@ -1,6 +1,7 @@
 // ==UserScript==
 // @name          JSON Formatter
 // @match         *://*/*.json
+// @match         data:application/json,*
 // @description	  Format and display JSON in a much better way
 // @author        JamesJ0717
 // @license       MIT
